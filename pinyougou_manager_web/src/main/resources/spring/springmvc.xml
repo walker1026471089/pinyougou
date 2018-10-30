@@ -25,6 +25,10 @@
 	  </mvc:message-converters>  
 	</mvc:annotation-driven>
 
+	<!--释放静态资源，目的：让web.xml里配置的控制器不拦截css，js等静态页面，
+		但是此案例拦截的是*.do,可以不释放静态资源，如果拦截的是 / 就需要释放静态资源-->
+	<mvc:default-servlet-handler></mvc:default-servlet-handler>
+
 	<!-- 引用dubbo 服务 -->
 	<dubbo:application name="pinyougou-manager-web" />
 	<dubbo:registry address="zookeeper://192.168.25.128:2181"/>
