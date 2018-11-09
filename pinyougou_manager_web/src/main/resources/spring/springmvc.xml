@@ -29,6 +29,14 @@
 		但是此案例拦截的是*.do,可以不释放静态资源，如果拦截的是 / 就需要释放静态资源-->
 	<mvc:default-servlet-handler></mvc:default-servlet-handler>
 
+	<!-- 配置多媒体解析器 -->
+	<bean id="multipartResolver"
+		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<!-- 设定文件上传的最大值 5MB， 5*1024*1024 -->
+		<property name="maxUploadSize" value="5242880"></property>
+	</bean>
+
 	<!-- 引用dubbo 服务 -->
 	<dubbo:application name="pinyougou-manager-web" />
 	<dubbo:registry address="zookeeper://192.168.25.128:2181"/>
